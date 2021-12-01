@@ -16,7 +16,8 @@ def emit_state(state):
 
     :param state, State: state with bookmarks dictionary
     """
-    if state is not None:
+    # Make sure the state is neither None nor an empty dictionary
+    if state is not None and len(state) > 0:
         line = json.dumps(state)
         logger.debug("Emitting state {}".format(line))
         sys.stdout.write("{}\n".format(line))
