@@ -30,7 +30,12 @@ class State(dict):
                         t = t[p]
 
             elif isinstance(m, Remove):
-                pass
+                for i, p in enumerate(m.path):
+                    if i == len(m.path)-1:
+                        t.pop(p, None)
+                    else:
+                        if p not in t: t[p] = {}
+                        t = t[p]
 
 
 class LiteralState(State):
